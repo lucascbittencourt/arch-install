@@ -16,6 +16,10 @@ echo "127.0.0.1 localhost" >> /etc/hosts
 echo "::1       localhost" >> /etc/hosts
 echo "127.0.1.1 arch.localdomain arch" >> /etc/hosts
 
+# Pacman.conf
+sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 10/' /etc/pacman.conf
+sed -i 's/^#Color = 5/Color/' /etc/pacman.conf
+
 # Install packages
 
 pacman -S \
@@ -64,34 +68,7 @@ pacman -S \
     acpi_call \
     tlp \
     acpid \
-    ntfs-3g \
-    ly \
-    i3 \
-    i3status \
-    dmenu \
-    rofi \
-    nitrogen \
-    picom \
-    lxappearance \
-    docker \
-    docker-compose \
-    zsh \
-    zsh-completions \
-    zsh-syntax-highlighting \
-    zsh-autosuggestions \
-    sudo \
-    arandr \
-    flameshot \
-    libreoffice \
-    noto-fonts \
-    noto-fonts-cjk \
-    noto-fonts-emoji \
-    noto-fonts-extra \
-    ttf-ubuntu-font-family \
-    xfce4-terminal \
-    brightnessctl \
-    arc-gtk-theme \
-    archlinux-wallpaper 
+    ntfs-3g 
 
 # GRUB
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
@@ -108,16 +85,10 @@ systemctl enable reflector.timer
 systemctl enable fstrim.timer
 systemctl enable firewalld
 systemctl enable acpid
-systemctl enable ly
-systemctl enable docker.service
 
 # User
 useradd -m -s /bin/zsh lucas
 passwd lucas
 echo "lucas ALL=(ALL) ALL" >> /etc/sudoers
-
-# Add user to groups
-
-usermod -aG docker lucas
 
 echo "All done!" 
