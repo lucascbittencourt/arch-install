@@ -16,6 +16,10 @@ echo "127.0.0.1 localhost" >> /etc/hosts
 echo "::1       localhost" >> /etc/hosts
 echo "127.0.1.1 arch.localdomain arch" >> /etc/hosts
 
+# Root Password
+echo "Root password:"
+passwd
+
 # Pacman.conf
 sed -i 's/^#ParallelDownloads = 5/ParallelDownloads = 10/' /etc/pacman.conf
 sed -i 's/^#Color = 5/Color/' /etc/pacman.conf
@@ -64,9 +68,8 @@ pacman -S \
     bash-completion \
     openssh \
     rsync \
-    acpi \
-    acpi_call \
-    tlp \
+    sof-firmware \
+    nss-mdns \
     acpid \
     ntfs-3g 
 
@@ -80,7 +83,6 @@ systemctl enable bluetooth
 systemctl enable cups.service
 systemctl enable sshd
 systemctl enable avahi-daemon
-systemctl enable tlp
 systemctl enable reflector.timer
 systemctl enable fstrim.timer
 systemctl enable firewalld
@@ -89,6 +91,6 @@ systemctl enable acpid
 # User
 useradd -m -s /bin/zsh lucas
 passwd lucas
-echo "lucas ALL=(ALL) ALL" >> /etc/sudoers
+echo "lucas ALL=(ALL) ALL" >> /etc/sudoers.d/lucas
 
 echo "All done!" 
