@@ -1,21 +1,4 @@
-#!
-
-# Yay packages
-
-yay -S --noconfirm \
-    google-chrome \
-    discord \
-    vlc \
-    spotify \
-    whatsapp-nativefier \
-    tuxedo-drivers-dkms \
-    networkmanager-dmenu-git \
-    ttf-material-icons-git \
-    phpstorm \
-    visual-studio-code-bin \
-    insomnia \
-    postman \
-    oh-my-zsh-git
+#! /bin/sh
 
 # i3 config
 
