@@ -28,6 +28,10 @@ sudo pacman -S \
     arc-gtk-theme \
     archlinux-wallpaper 
 
+sudo systemctl enable docker.service
+
+usermod -aG docker lucas
+
 # Display manager 
 git clone https://aur.archlinux.org/ly
 cd ly
